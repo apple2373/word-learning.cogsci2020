@@ -41,7 +41,7 @@ cd train_cnn
 ```
 This trains with the subset of `naiming_3s_whole_img_acuity.txt`. 
   
-All the training I did for this paper is [`all_trainings.sh`](./train_cnns/all_trainings.sh)  . The training results are in `./experiments/cogsci2020-reported/`, which is included in the salk, but not in this github repository.
+All the training I did for this paper is [`all_trainings.sh`](./train_cnn/all_trainings.sh)  . The training results are in `./experiments/cogsci2020-reported/`, which is included in the salk, but not in this github repository.
 
 ## Results
 The results plot used in the paper is in [`./results`](./results). The code to make these plots are [`./ipython/results-cnn-train-reported-cogsci2020.ipynb`](./ipython/results-cnn-train-reported-cogsci2020.ipynb)
