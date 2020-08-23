@@ -14,6 +14,11 @@ See [`env.yml`](./env.yml) for the exact environment. As a shortcut, you can use
 ```
 /data/stsutsui/public/word-learning.cogsci2020/miniconda/bin/python
 ```
+That is, you will do
+```
+export PATH="/data/stsutsui/public/word-learning.cogsci2020/miniconda/bin:$PATH"
+```
+Make sure that `which python` will give the above python binary.
 
 ## Image Data
 I copied the necessary image files into the following. 
@@ -31,13 +36,15 @@ The point of this work is to make a training set based on a criteria, and then t
 To train cnns, you need to go to the `./train_cnn` directory. [`main.py`](./train_cnn/main.py) is the training script. This script should be readable. You can see the help to get the meanings of args.
 ```
 cd train_cnn
-/data/stsutsui/public/word-learning.cogsci2020/miniconda/bin/python main.py --help
+export PATH="/data/stsutsui/public/word-learning.cogsci2020/miniconda/bin:$PATH"
+python main.py --help
 ```
 
 An example command to train is:
 ```
 cd train_cnn
-/data/stsutsui/public/word-learning.cogsci2020/miniconda/bin/python main.py --saveroot ../experiments/cogsci2020/ --train  ../data/dataset_txt/naiming_3s_whole_img_acuity.txt --seed 1 --gpu 1
+export PATH="/data/stsutsui/public/word-learning.cogsci2020/miniconda/bin:$PATH"
+python main.py --saveroot ../experiments/cogsci2020/ --train  ../data/dataset_txt/naiming_3s_whole_img_acuity.txt --seed 1 --gpu 1
 ```
 This trains with the subset of `naiming_3s_whole_img_acuity.txt`. 
   
