@@ -2,23 +2,25 @@
 - See https://arxiv.org/abs/2006.02802
 
 ## Environment
-See `env.yml` for the exact environment. As a shortcut, you can use the following python binary as is. 
+See [`env.yml`](./env.yml) for the exact environment. As a shortcut, you can use the following python binary as is. 
 ```
 /data/stsutsui/public/word-learning.cogsci2020/miniconda/bin/python
 ```
 
 ## Image Data
-I copied the necessary image files into the following.
+I copied the necessary image files into the following. 
 - `./data/naming_3s_imgs`
 - `./data/test_images`
-The naming rule is same as experiment 13 where `cam07` is child view and `cam08` is parent view, and `frames` are raw frames, and `acuity` is after applied acuity filter. 
+
+
+The naming rule is same as experiment 13 where `cam07` is child view and `cam08` is parent view, and `frames` are raw frames, and `acuity` is after applied acuity filter. These are not included in the github but is in the salk. 
 
 
 ## Training Data
-The point of this work is to make a training set based on a criteria, and then train CNNs. I represent each set as a txt file. These files are inside `./data/dataset_txt`. The name is sort of informative enough to figure out the corresponding set mentioned in the paper. It's a simple csv file to list path to images and corresponding labels. 
+The point of this work is to make a training set based on a criteria, and then train CNNs. I represent each set as a txt file. These files are inside [`./data/dataset_txt`](./data/dataset_txt). The name is sort of informative enough to figure out the corresponding set mentioned in the paper. It's a simple csv file to list path to images and corresponding labels. 
 
 ## CNN training
-To train cnns, you need to go to the `./train_cnn` directory. `main.py` is the training script. This script should be readable. You can see the help to get the meanings of args.
+To train cnns, you need to go to the `./train_cnn` directory. [`main.py`](./main.py) is the training script. This script should be readable. You can see the help to get the meanings of args.
 ```
 cd train_cnn
 /data/stsutsui/public/word-learning.cogsci2020/miniconda/bin/python main.py --help
@@ -31,7 +33,7 @@ cd train_cnn
 ```
 This trains with the subset of `naiming_3s_whole_img_acuity.txt`. 
   
-All the training I did for this paper is in `./train_cnns/all_trainings.sh`. The training results are in `./experiments/cogsci2020-reported/`
+All the training I did for this paper is [`all_trainings.sh`](./train_cnns/all_trainings.sh)  . The training results are in `./experiments/cogsci2020-reported/`, which is included in the salk, but not in this github repository.
 
 ## Results
 The results plot used in the paper is in `./results`. The code to make these plots are `./ipython/results-cnn-train-reported-cogsci2020.ipynb`
