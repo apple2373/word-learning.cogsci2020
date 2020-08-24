@@ -226,15 +226,8 @@ def evaluate(dataloader,model,criterion,accuracy,device=None):
 def main(args):
     since = time.time()
     print(args)
-    if args.seed < 0:
-        if os.getenv('SATOSHI_SEED') is not None and args.seed == -2:
-            args.seed = int(os.getenv('SATOSHI_SEED'))
-            print("env seed used")
-        else:
-            import math
-            seed = int(10**4*math.modf(time.time())[0])
-            args.seed = seed
-    print("random seed",args.seed)
+    #set seed
+    args.seed = utils.setup_seed(args.seed)
     utils.make_deterministic(args.seed)
         
     #setup the directory to save the experiment log and trained models

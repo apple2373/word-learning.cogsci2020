@@ -134,6 +134,17 @@ def check_gitstatus():
         
     return {"hash":sha,"changed":changed,"status":status}
 
+def setup_seed(seed):
+    if seed < 0:
+        if os.getenv('SATOSHI_SEED') is not None and seed == -2:
+            seed = int(os.getenv('SATOSHI_SEED'))
+            print("env seed used")
+        else:
+            import math
+            seed = int(10**4*math.modf(time.time())[0])
+            seed = seed
+    print("random seed",seed)
+    return seed
 
 def make_deterministic(seed,strict=False):
     #https://github.com/pytorch/pytorch/issues/7068#issuecomment-487907668
