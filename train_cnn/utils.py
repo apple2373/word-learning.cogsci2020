@@ -1,4 +1,5 @@
 import os
+os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 import sys
 import json
 import random
@@ -8,11 +9,13 @@ import torch
 def setup_device(gpu_id):
     #set up GPUS
     os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
-    os.environ['CUDA_VISIBLE_DEVICES'] = ""    
-    gpu_id = int(gpu_id)
-    if gpu_id >= 0:
+    if int(gpu_id)==-2 and os.getenv('CUDA_VISIBLE_DEVICES') is not None:
+        gpu_id = os.getenv('CUDA_VISIBLE_DEVICES')
+    elif  int(gpu_id) >= 0:
         os.environ['CUDA_VISIBLE_DEVICES'] = str(gpu_id)
-        print("set CUDA_VISIBLE_DEVICES=%s"%gpu_id)
+        print("set CUDA_VISIBLE_DEVICES=",gpu_id)
+    else:
+        os.environ['CUDA_VISIBLE_DEVICES'] = ""
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("using device %s"%device)
     return device

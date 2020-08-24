@@ -243,11 +243,7 @@ def main(args):
     
     #save args
     utils.save_args(log_dir,args)
-    
-    #setup gpu
-    if args.gpu==-2 and os.getenv('CUDA_VISIBLE_DEVICES') is not None:
-        args.gpu = os.getenv('CUDA_VISIBLE_DEVICES')
-        
+    #setup device
     device = utils.setup_device(args.gpu)
         
     #setup dataset and dataloaders
